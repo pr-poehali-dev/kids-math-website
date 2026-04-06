@@ -18,33 +18,28 @@ const TASKS = [
   { id: 2, level: 1, type: "count", title: "Считаем звёздочки", question: "Сколько звёздочек? ⭐⭐⭐", answer: "3", options: ["2", "3", "4", "5"], color: "bg-green-100", emoji: "⭐" },
   { id: 3, level: 1, type: "count", title: "Считаем мячики", question: "Сколько мячиков? ⚽⚽⚽⚽⚽⚽⚽", answer: "7", options: ["5", "6", "7", "8"], color: "bg-yellow-100", emoji: "⚽" },
   { id: 4, level: 1, type: "count", title: "Считаем сердечки", question: "Сколько сердечек? ❤️❤️❤️❤️", answer: "4", options: ["3", "4", "5", "6"], color: "bg-pink-100", emoji: "❤️" },
-  { id: 5, level: 1, type: "count", title: "Считаем цветочки", question: "Сколько цветочков? 🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸", answer: "10", options: ["8", "9", "10", "11"], color: "bg-rose-100", emoji: "🌸" },
-  { id: 6, level: 1, type: "count", title: "Считаем грибочки", question: "Сколько грибочков? 🍄🍄", answer: "2", options: ["1", "2", "3", "4"], color: "bg-amber-100", emoji: "🍄" },
+  { id: 5, level: 1, type: "count", title: "Считаем грибочки", question: "Сколько грибочков? 🍄🍄🍄🍄🍄🍄", answer: "6", options: ["4", "5", "6", "7"], color: "bg-amber-100", emoji: "🍄" },
 
   // Уровень 2 — состав числа
-  { id: 7, level: 2, type: "compose", title: "Состав числа 7", question: "7 = 3 + ?", answer: "4", options: ["3", "4", "5", "6"], color: "bg-purple-100", emoji: "🔢" },
-  { id: 8, level: 2, type: "compose", title: "Состав числа 10", question: "10 = ? + 6", answer: "4", options: ["2", "3", "4", "5"], color: "bg-orange-100", emoji: "🧩" },
-  { id: 9, level: 2, type: "compose", title: "Состав числа 9", question: "9 = 5 + ?", answer: "4", options: ["3", "4", "5", "6"], color: "bg-violet-100", emoji: "🎯" },
-  { id: 10, level: 2, type: "compose", title: "Состав числа 8", question: "8 = ? + 3", answer: "5", options: ["3", "4", "5", "6"], color: "bg-cyan-100", emoji: "🎲" },
-  { id: 11, level: 2, type: "compose", title: "Состав числа 6", question: "6 = 1 + ?", answer: "5", options: ["4", "5", "6", "7"], color: "bg-lime-100", emoji: "🌿" },
-  { id: 12, level: 2, type: "compose", title: "Состав числа 5", question: "5 = ? + 2", answer: "3", options: ["1", "2", "3", "4"], color: "bg-teal-100", emoji: "🐸" },
+  { id: 6, level: 2, type: "compose", title: "Состав числа 7", question: "7 = 3 + ?", answer: "4", options: ["3", "4", "5", "6"], color: "bg-purple-100", emoji: "🔢" },
+  { id: 7, level: 2, type: "compose", title: "Состав числа 10", question: "10 = ? + 6", answer: "4", options: ["2", "3", "4", "5"], color: "bg-orange-100", emoji: "🧩" },
+  { id: 8, level: 2, type: "compose", title: "Состав числа 9", question: "9 = 5 + ?", answer: "4", options: ["3", "4", "5", "6"], color: "bg-violet-100", emoji: "🎯" },
+  { id: 9, level: 2, type: "compose", title: "Состав числа 8", question: "8 = ? + 3", answer: "5", options: ["3", "4", "5", "6"], color: "bg-cyan-100", emoji: "🎲" },
+  { id: 10, level: 2, type: "compose", title: "Состав числа 5", question: "5 = ? + 2", answer: "3", options: ["1", "2", "3", "4"], color: "bg-teal-100", emoji: "🐸" },
 
   // Уровень 3 — логика
-  { id: 13, level: 3, type: "logic", title: "Что лишнее?", question: "Что лишнее: кошка, собака, роза, рыба?", answer: "роза", options: ["кошка", "собака", "роза", "рыба"], color: "bg-pink-100", emoji: "🌹" },
-  { id: 14, level: 3, type: "logic", title: "Следующее число", question: "2, 4, 6, 8, ?", answer: "10", options: ["9", "10", "11", "12"], color: "bg-yellow-100", emoji: "🔄" },
-  { id: 15, level: 3, type: "logic", title: "Продолжи ряд", question: "1, 3, 5, 7, ?", answer: "9", options: ["8", "9", "10", "11"], color: "bg-blue-100", emoji: "🧮" },
-  { id: 16, level: 3, type: "logic", title: "Что лишнее?", question: "Что лишнее: стол, стул, диван, яблоко?", answer: "яблоко", options: ["стол", "стул", "диван", "яблоко"], color: "bg-green-100", emoji: "🍎" },
-  { id: 17, level: 3, type: "logic", title: "Больше или меньше?", question: "Что больше: 7 или 5?", answer: "7", options: ["5", "6", "7", "8"], color: "bg-indigo-100", emoji: "⚖️" },
-  { id: 18, level: 3, type: "logic", title: "Продолжи ряд", question: "10, 20, 30, ?", answer: "40", options: ["35", "38", "40", "45"], color: "bg-orange-100", emoji: "📏" },
-  { id: 19, level: 3, type: "logic", title: "Что лишнее?", question: "Что лишнее: круг, квадрат, треугольник, синий?", answer: "синий", options: ["круг", "квадрат", "треугольник", "синий"], color: "bg-purple-100", emoji: "🔵" },
+  { id: 11, level: 3, type: "logic", title: "Что лишнее?", question: "Что лишнее: кошка, собака, роза, рыба?", answer: "роза", options: ["кошка", "собака", "роза", "рыба"], color: "bg-pink-100", emoji: "🌹" },
+  { id: 12, level: 3, type: "logic", title: "Следующее число", question: "2, 4, 6, 8, ?", answer: "10", options: ["9", "10", "11", "12"], color: "bg-yellow-100", emoji: "🔄" },
+  { id: 13, level: 3, type: "logic", title: "Продолжи ряд", question: "1, 3, 5, 7, ?", answer: "9", options: ["8", "9", "10", "11"], color: "bg-blue-100", emoji: "🧮" },
+  { id: 14, level: 3, type: "logic", title: "Что лишнее?", question: "Что лишнее: стол, стул, диван, яблоко?", answer: "яблоко", options: ["стол", "стул", "диван", "яблоко"], color: "bg-green-100", emoji: "🍎" },
+  { id: 15, level: 3, type: "logic", title: "Продолжи ряд", question: "10, 20, 30, ?", answer: "40", options: ["35", "38", "40", "45"], color: "bg-orange-100", emoji: "📏" },
 
   // Уровень 4 — сложение и вычитание
-  { id: 20, level: 4, type: "count", title: "Сложение", question: "8 + 7 = ?", answer: "15", options: ["13", "14", "15", "16"], color: "bg-teal-100", emoji: "➕" },
-  { id: 21, level: 4, type: "compose", title: "Вычитание", question: "20 − 8 = ?", answer: "12", options: ["10", "11", "12", "13"], color: "bg-indigo-100", emoji: "➖" },
-  { id: 22, level: 4, type: "count", title: "Сложение", question: "13 + 5 = ?", answer: "18", options: ["16", "17", "18", "19"], color: "bg-sky-100", emoji: "🔵" },
-  { id: 23, level: 4, type: "compose", title: "Вычитание", question: "15 − 7 = ?", answer: "8", options: ["6", "7", "8", "9"], color: "bg-rose-100", emoji: "🔴" },
-  { id: 24, level: 4, type: "count", title: "Сложение трёх чисел", question: "3 + 4 + 5 = ?", answer: "12", options: ["10", "11", "12", "13"], color: "bg-green-100", emoji: "✨" },
-  { id: 25, level: 4, type: "compose", title: "Пропущенное число", question: "? + 9 = 17", answer: "8", options: ["6", "7", "8", "9"], color: "bg-amber-100", emoji: "❓" },
+  { id: 16, level: 4, type: "count", title: "Сложение", question: "8 + 7 = ?", answer: "15", options: ["13", "14", "15", "16"], color: "bg-teal-100", emoji: "➕" },
+  { id: 17, level: 4, type: "compose", title: "Вычитание", question: "20 − 8 = ?", answer: "12", options: ["10", "11", "12", "13"], color: "bg-indigo-100", emoji: "➖" },
+  { id: 18, level: 4, type: "count", title: "Сложение", question: "13 + 5 = ?", answer: "18", options: ["16", "17", "18", "19"], color: "bg-sky-100", emoji: "🔵" },
+  { id: 19, level: 4, type: "compose", title: "Вычитание", question: "15 − 7 = ?", answer: "8", options: ["6", "7", "8", "9"], color: "bg-rose-100", emoji: "🔴" },
+  { id: 20, level: 4, type: "compose", title: "Пропущенное число", question: "? + 9 = 17", answer: "8", options: ["6", "7", "8", "9"], color: "bg-amber-100", emoji: "❓" },
 ];
 
 const REWARDS = [
@@ -236,9 +231,18 @@ function TasksSection() {
                     </button>
                   ))}
                 </div>
+              ) : isCorrect ? (
+                <div className="text-center py-3 rounded-xl font-display font-bold text-sm bg-green-50 text-green-600 animate-bounce-in">
+                  ✅ Верно! Молодец!
+                </div>
               ) : (
-                <div className={`text-center py-3 rounded-xl font-display font-bold text-sm ${isCorrect ? "bg-green-50 text-green-600" : "bg-red-50 text-red-500"}`}>
-                  {isCorrect ? "✅ Верно! Молодец!" : `❌ Правильный ответ: ${task.answer}`}
+                <div className="space-y-2 animate-bounce-in">
+                  <div className="text-center py-2.5 rounded-xl font-display font-bold text-sm bg-red-50 text-red-500 border border-red-100">
+                    ❌ Неправильно
+                  </div>
+                  <div className="text-center py-2.5 rounded-xl font-display font-bold text-sm bg-green-50 text-green-600 border border-green-100">
+                    ✅ Правильный ответ: {task.answer}
+                  </div>
                 </div>
               )}
             </div>
@@ -374,7 +378,7 @@ function ParentsSection() {
           <div>
             <h3 className="font-display font-bold text-[#3A3A5C] mb-2">О платформе</h3>
             <p className="text-gray-600 text-sm leading-relaxed">
-              Умняша — интерактивная платформа для детей 6–9 лет. 25 заданий построены по принципу
+              Умняша — интерактивная платформа для детей дошкольного возраста. 20 заданий построены по принципу
               прогрессии: от простого счёта до логических задач. Система наград мотивирует
               возвращаться каждый день.
             </p>
@@ -396,10 +400,10 @@ function ParentsSection() {
         <h3 className="font-display font-bold text-[#3A3A5C] mb-3">Программа по уровням</h3>
         <div className="space-y-2">
           {[
-            { l: 1, icon: "🌱", text: "Счёт до 10, распознавание количества (6 заданий)" },
-            { l: 2, icon: "🌿", text: "Состав числа, простые примеры (6 заданий)" },
-            { l: 3, icon: "🌳", text: "Логика, закономерности, сравнение (7 заданий)" },
-            { l: 4, icon: "🚀", text: "Сложение и вычитание до 20 (6 заданий)" },
+            { l: 1, icon: "🌱", text: "Счёт до 10, распознавание количества (5 заданий)" },
+            { l: 2, icon: "🌿", text: "Состав числа, простые примеры (5 заданий)" },
+            { l: 3, icon: "🌳", text: "Логика, закономерности, сравнение (5 заданий)" },
+            { l: 4, icon: "🚀", text: "Сложение и вычитание до 20 (5 заданий)" },
           ].map(item => (
             <div key={item.l} className="flex items-center gap-3 text-sm">
               <span className="font-display font-bold text-gray-400 w-16">Ур. {item.l}</span>
