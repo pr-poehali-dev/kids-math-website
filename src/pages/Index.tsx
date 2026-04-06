@@ -507,11 +507,12 @@ function ContactsSection() {
         </div>
         <div className="space-y-3">
           {[
-            { icon: "Mail", label: "Email", value: "hello@umnyasha.ru" },
-            { icon: "MessageCircle", label: "Telegram", value: "@umnyasha_bot" },
-            { icon: "Phone", label: "Телефон", value: "+7 (800) 123-45-67" },
+            { icon: "Mail", label: "Email", value: "alenambarcuman5@gmail.com", href: "mailto:alenambarcuman5@gmail.com" },
+            { icon: "MessageCircle", label: "Telegram", value: "@YT_Alen", href: "https://t.me/YT_Alen" },
+            { icon: "Phone", label: "Телефон", value: "+7 952 950-09-89", href: "tel:+79529500989" },
+            { icon: "ExternalLink", label: "Канал для связи в MAX", value: "Открыть MAX", href: "https://max.ru/join/CZH02dg2N1J6Ru9EpUKAiKM-Q4V2KXow7leOHYBHGZw" },
           ].map((c, i) => (
-            <div key={i} className="flex items-center gap-3 p-4 bg-gray-50 rounded-xl hover:bg-sky-50 transition-colors cursor-pointer group">
+            <a key={i} href={c.href} target="_blank" rel="noopener noreferrer" className="flex items-center gap-3 p-4 bg-gray-50 rounded-xl hover:bg-sky-50 transition-colors cursor-pointer group no-underline">
               <div className="w-10 h-10 bg-white rounded-xl flex items-center justify-center shadow-sm group-hover:shadow-md transition-shadow">
                 <Icon name={c.icon} fallback="Mail" size={18} className="text-[#5BAADC]" />
               </div>
@@ -519,7 +520,7 @@ function ContactsSection() {
                 <div className="text-xs text-gray-400 font-display font-semibold">{c.label}</div>
                 <div className="font-display font-bold text-[#3A3A5C]">{c.value}</div>
               </div>
-            </div>
+            </a>
           ))}
         </div>
       </div>
