@@ -111,6 +111,28 @@ const TASKS = [
   { id: 48, level: 4, type: "count",   title: "Сложение трёх чисел",   question: "3 + 4 + 5 = ?",  answer: "12", options: ["10","11","12","13"], color: "bg-lime-100",    emoji: "✨" },
   { id: 49, level: 4, type: "compose", title: "Вычитание",             question: "20 − 13 = ?",    answer: "7",  options: ["5","6","7","8"],     color: "bg-fuchsia-100", emoji: "🟣" },
   { id: 50, level: 4, type: "count",   title: "Сложение",              question: "7 + 6 = ?",      answer: "13", options: ["11","12","13","14"], color: "bg-pink-100",    emoji: "💫" },
+
+  // Уровень 5 — сравнение чисел (20 заданий)
+  { id: 51, level: 5, type: "compare", title: "Сравни числа",    question: "Какое число больше: 3 или 7?",    answer: "7",  options: ["3","5","6","7"],    color: "bg-sky-100",     emoji: "⚖️" },
+  { id: 52, level: 5, type: "compare", title: "Сравни числа",    question: "Какое число меньше: 9 или 4?",    answer: "4",  options: ["4","6","7","9"],    color: "bg-green-100",   emoji: "🔽" },
+  { id: 53, level: 5, type: "compare", title: "Сравни числа",    question: "Какое число больше: 5 или 2?",    answer: "5",  options: ["2","3","4","5"],    color: "bg-violet-100",  emoji: "🔼" },
+  { id: 54, level: 5, type: "compare", title: "Сравни числа",    question: "Какое число меньше: 6 или 10?",   answer: "6",  options: ["6","7","8","10"],   color: "bg-amber-100",   emoji: "⚖️" },
+  { id: 55, level: 5, type: "compare", title: "Сравни числа",    question: "Какое число больше: 8 или 1?",    answer: "8",  options: ["1","4","6","8"],    color: "bg-rose-100",    emoji: "🔼" },
+  { id: 56, level: 5, type: "compare", title: "Найди наибольшее", question: "Какое число самое большое: 3, 7, 5, 1?", answer: "7", options: ["1","3","5","7"], color: "bg-orange-100", emoji: "🏆" },
+  { id: 57, level: 5, type: "compare", title: "Найди наименьшее", question: "Какое число самое маленькое: 8, 2, 6, 4?", answer: "2", options: ["2","4","6","8"], color: "bg-teal-100",  emoji: "🐜" },
+  { id: 58, level: 5, type: "compare", title: "Сравни числа",    question: "Какое число больше: 12 или 9?",   answer: "12", options: ["9","10","11","12"], color: "bg-indigo-100",  emoji: "🔼" },
+  { id: 59, level: 5, type: "compare", title: "Сравни числа",    question: "Какое число меньше: 15 или 11?",  answer: "11", options: ["11","12","13","15"],color: "bg-lime-100",    emoji: "🔽" },
+  { id: 60, level: 5, type: "compare", title: "Найди наибольшее", question: "Какое число самое большое: 10, 5, 8, 3?", answer: "10", options: ["3","5","8","10"], color: "bg-cyan-100", emoji: "🥇" },
+  { id: 61, level: 5, type: "compare", title: "Между числами",   question: "Какое число стоит между 6 и 8?",  answer: "7",  options: ["5","6","7","9"],    color: "bg-pink-100",    emoji: "🎯" },
+  { id: 62, level: 5, type: "compare", title: "Между числами",   question: "Какое число стоит между 9 и 11?", answer: "10", options: ["8","9","10","12"],  color: "bg-yellow-100",  emoji: "🎯" },
+  { id: 63, level: 5, type: "compare", title: "Найди наименьшее", question: "Какое число самое маленькое: 12, 7, 15, 9?", answer: "7", options: ["7","9","12","15"], color: "bg-fuchsia-100", emoji: "🐛" },
+  { id: 64, level: 5, type: "compare", title: "Сравни числа",    question: "Какое число больше: 20 или 15?",  answer: "20", options: ["15","16","18","20"], color: "bg-purple-100",  emoji: "🔼" },
+  { id: 65, level: 5, type: "compare", title: "Сравни числа",    question: "Какое число меньше: 13 или 17?",  answer: "13", options: ["13","14","15","17"], color: "bg-blue-100",    emoji: "🔽" },
+  { id: 66, level: 5, type: "compare", title: "Между числами",   question: "Какое число стоит между 14 и 16?", answer: "15", options: ["13","14","15","17"], color: "bg-emerald-100", emoji: "🎯" },
+  { id: 67, level: 5, type: "compare", title: "Найди наибольшее", question: "Какое число самое большое: 6, 14, 9, 11?", answer: "14", options: ["6","9","11","14"], color: "bg-red-100",  emoji: "🥇" },
+  { id: 68, level: 5, type: "compare", title: "Сравни числа",    question: "Какое число меньше: 4 или 4?",    answer: "равны", options: ["4","равны","нет ответа","больше"], color: "bg-sky-100", emoji: "🟰" },
+  { id: 69, level: 5, type: "compare", title: "Сравни числа",    question: "Какое число больше: 18 или 13?",  answer: "18", options: ["13","15","16","18"], color: "bg-orange-100",  emoji: "🔼" },
+  { id: 70, level: 5, type: "compare", title: "Найди наименьшее", question: "Какое число самое маленькое: 20, 11, 17, 5?", answer: "5", options: ["5","11","17","20"], color: "bg-violet-100", emoji: "🐜" },
 ];
 
 const REWARDS = [
@@ -151,8 +173,8 @@ function HomeSection({ onStart }: { onStart: () => void }) {
 
       <div className="grid grid-cols-3 gap-4 mb-8">
         {[
-          { emoji: "📚", value: "50", label: "заданий" },
-          { emoji: "🎯", value: "4", label: "уровня" },
+          { emoji: "📚", value: "70", label: "заданий" },
+          { emoji: "🎯", value: "5", label: "уровней" },
           { emoji: "⭐", value: "8", label: "наград" },
         ].map((s, i) => (
           <div key={i} className="card-soft text-center py-5 animate-slide-up hover-lift" style={{ animationDelay: `${0.1 + i * 0.08}s` }}>
@@ -183,7 +205,7 @@ function HomeSection({ onStart }: { onStart: () => void }) {
 
 function TasksSection() {
   const [answered, setAnswered] = useState<Record<number, string>>({});
-  const [filter, setFilter] = useState<"all" | "count" | "compose" | "logic">("all");
+  const [filter, setFilter] = useState<"all" | "count" | "compose" | "logic" | "compare">("all");
   const [levelFilter, setLevelFilter] = useState<number | null>(null);
 
   let filtered = filter === "all" ? TASKS : TASKS.filter(t => t.type === filter);
@@ -207,6 +229,7 @@ function TasksSection() {
     { key: "count", label: "Счёт 🔢" },
     { key: "compose", label: "Состав 🧩" },
     { key: "logic", label: "Логика 🧠" },
+    { key: "compare", label: "Сравнение ⚖️" },
   ] as const;
 
   const levelBtns = [
@@ -215,6 +238,7 @@ function TasksSection() {
     { l: 2, label: "🌿 Ур. 2" },
     { l: 3, label: "🌳 Ур. 3" },
     { l: 4, label: "🚀 Ур. 4" },
+    { l: 5, label: "⚖️ Ур. 5" },
   ];
 
   return (
@@ -285,7 +309,7 @@ function TasksSection() {
             >
               <div className="flex items-center justify-between mb-3">
                 <span className={`text-xs font-display font-bold px-2.5 py-1 rounded-full ${task.color} text-gray-600`}>
-                  {task.level === 1 ? "🌱" : task.level === 2 ? "🌿" : task.level === 3 ? "🌳" : "🚀"} Ур. {task.level}
+                  {task.level === 1 ? "🌱" : task.level === 2 ? "🌿" : task.level === 3 ? "🌳" : task.level === 4 ? "🚀" : "⚖️"} Ур. {task.level}
                 </span>
                 <span className="text-2xl">{task.emoji}</span>
               </div>
@@ -473,10 +497,11 @@ function ParentsSection() {
         <h3 className="font-display font-bold text-[#3A3A5C] mb-3">Программа по уровням</h3>
         <div className="space-y-2">
           {[
-            { l: 1, icon: "🌱", text: "Счёт до 10, распознавание количества (5 заданий)" },
-            { l: 2, icon: "🌿", text: "Состав числа, простые примеры (5 заданий)" },
-            { l: 3, icon: "🌳", text: "Логика, закономерности, сравнение (5 заданий)" },
-            { l: 4, icon: "🚀", text: "Сложение и вычитание до 20 (5 заданий)" },
+            { l: 1, icon: "🌱", text: "Счёт до 10, распознавание количества (14 заданий)" },
+            { l: 2, icon: "🌿", text: "Состав числа, простые примеры (12 заданий)" },
+            { l: 3, icon: "🌳", text: "Логика, закономерности (12 заданий)" },
+            { l: 4, icon: "🚀", text: "Сложение и вычитание до 20 (12 заданий)" },
+            { l: 5, icon: "⚖️", text: "Сравнение чисел, больше/меньше (20 заданий)" },
           ].map(item => (
             <div key={item.l} className="flex items-center gap-3 text-sm">
               <span className="font-display font-bold text-gray-400 w-16">Ур. {item.l}</span>
