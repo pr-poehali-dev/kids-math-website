@@ -1,4 +1,4 @@
-import { useState, useCallback } from "react";
+import React, { useState, useCallback } from "react";
 import Icon from "@/components/ui/icon";
 
 function playSound(type: "correct" | "wrong") {
@@ -203,8 +203,7 @@ function HomeSection({ onStart }: { onStart: () => void }) {
   );
 }
 
-function TasksSection() {
-  const [answered, setAnswered] = useState<Record<number, string>>({});
+function TasksSection({ answered, setAnswered }: { answered: Record<number, string>; setAnswered: React.Dispatch<React.SetStateAction<Record<number, string>>> }) {
   const [filter, setFilter] = useState<"all" | "count" | "compose" | "logic" | "compare">("all");
   const [levelFilter, setLevelFilter] = useState<number | null>(null);
 
@@ -216,7 +215,7 @@ function TasksSection() {
     const task = TASKS.find(t => t.id === taskId);
     playSound(task?.answer === option ? "correct" : "wrong");
     setAnswered(prev => ({ ...prev, [taskId]: option }));
-  }, [answered]);
+  }, [answered, setAnswered]);
 
   const totalAnswered = Object.keys(answered).length;
   const totalCorrect = Object.entries(answered).filter(([id, ans]) => {
@@ -350,10 +349,9 @@ function TasksSection() {
   );
 }
 
-function ProgressSection() {
+function ProgressSection({ totalAnswered, totalCorrect, accuracy, earnedRewards }: { totalAnswered: number; totalCorrect: number; accuracy: number; earnedRewards: number }) {
   const total = TASKS.length;
-  const done = 3;
-  const pct = Math.round((done / total) * 100);
+  const pct = Math.round((totalAnswered / total) * 100);
   const maxDay = Math.max(...PROGRESS_DAYS.map(d => d.done));
 
   return (
@@ -368,8 +366,9 @@ function ProgressSection() {
           <div>
             <p className="text-sm text-gray-400 mb-1">Пройдено заданий</p>
             <p className="font-display text-4xl font-extrabold text-[#3A3A5C]">
-              {done} <span className="text-xl text-gray-300">/ {total}</span>
+              {totalAnswered} <span className="text-xl text-gray-300">/ {total}</span>
             </p>
+            <p className="text-sm text-gray-400 mt-1">Правильно: {totalCorrect}</p>
           </div>
           <div
             className="w-20 h-20 rounded-full flex items-center justify-center animate-bounce-in"
@@ -387,9 +386,9 @@ function ProgressSection() {
 
       <div className="grid grid-cols-3 gap-3 mb-4">
         {[
-          { emoji: "🔥", value: "3", label: "дня подряд" },
-          { emoji: "⭐", value: "3", label: "награды" },
-          { emoji: "💯", value: "75%", label: "точность" },
+          { emoji: "🎯", value: String(totalCorrect), label: "правильных" },
+          { emoji: "⭐", value: String(earnedRewards), label: "наград" },
+          { emoji: "💯", value: `${accuracy}%`, label: "точность" },
         ].map((s, i) => (
           <div key={i} className="card-soft text-center py-4 animate-slide-up" style={{ animationDelay: `${0.15 + i * 0.07}s` }}>
             <div className="text-2xl mb-1">{s.emoji}</div>
@@ -421,27 +420,27 @@ function ProgressSection() {
   );
 }
 
-function RewardsSection() {
-  const earned = REWARDS.filter(r => r.earned);
+function RewardsSection({ rewards }: { rewards: typeof REWARDS }) {
+  const earned = rewards.filter(r => r.earned);
   return (
     <div className="max-w-2xl mx-auto">
       <div className="mb-6 animate-fade-in">
         <h2 className="font-display text-3xl font-extrabold text-[#3A3A5C] mb-1">Награды</h2>
-        <p className="text-gray-400">Собрано {earned.length} из {REWARDS.length}</p>
+        <p className="text-gray-400">Собрано {earned.length} из {rewards.length}</p>
       </div>
 
       <div className="card-soft p-5 mb-5 animate-slide-up">
         <div className="flex items-center justify-between mb-2">
           <span className="font-display font-bold text-[#3A3A5C] text-sm">Коллекция значков</span>
-          <span className="text-sm text-gray-400">{earned.length} / {REWARDS.length}</span>
+          <span className="text-sm text-gray-400">{earned.length} / {rewards.length}</span>
         </div>
         <div className="w-full bg-gray-100 rounded-full h-2.5">
-          <div className="h-2.5 rounded-full" style={{ width: `${(earned.length / REWARDS.length) * 100}%`, background: "linear-gradient(90deg, #EDBA45, #F4A261)" }} />
+          <div className="h-2.5 rounded-full" style={{ width: `${(earned.length / rewards.length) * 100}%`, background: "linear-gradient(90deg, #EDBA45, #F4A261)" }} />
         </div>
       </div>
 
       <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
-        {REWARDS.map((r, i) => (
+        {rewards.map((r, i) => (
           <div key={r.id} className={`card-soft p-4 text-center animate-bounce-in transition-all ${r.earned ? "hover-lift" : "opacity-50 grayscale"}`} style={{ animationDelay: `${i * 0.06}s` }}>
             <div className={`text-4xl mb-2 ${r.earned ? "animate-pulse-soft" : ""}`}>{r.emoji}</div>
             <div className="font-display font-bold text-[#3A3A5C] text-xs leading-tight mb-1">{r.name}</div>
@@ -475,7 +474,7 @@ function ParentsSection() {
           <div>
             <h3 className="font-display font-bold text-[#3A3A5C] mb-2">О платформе</h3>
             <p className="text-gray-600 text-sm leading-relaxed">
-              Умняша — интерактивная платформа для детей дошкольного возраста. 20 заданий построены по принципу
+              Умняша — интерактивная платформа для детей дошкольного возраста. 70 заданий построены по принципу
               прогрессии: от простого счёта до логических задач. Система наград мотивирует
               возвращаться каждый день.
             </p>
@@ -567,13 +566,41 @@ function ContactsSection() {
 
 export default function Index() {
   const [active, setActive] = useState<Section>("home");
+  const [answered, setAnswered] = useState<Record<number, string>>({});
+
+  const totalAnswered = Object.keys(answered).length;
+  const totalCorrect = Object.entries(answered).filter(([id, ans]) => {
+    const task = TASKS.find(t => t.id === Number(id));
+    return task?.answer === ans;
+  }).length;
+  const accuracy = totalAnswered > 0 ? Math.round((totalCorrect / totalAnswered) * 100) : 0;
+
+  const correctByType = (type: string) =>
+    Object.entries(answered).filter(([id, ans]) => {
+      const task = TASKS.find(t => t.id === Number(id));
+      return task?.type === type && task?.answer === ans;
+    }).length;
+
+  const computedRewards = REWARDS.map(r => {
+    switch (r.id) {
+      case 1: return { ...r, earned: totalAnswered >= 1 };
+      case 2: return { ...r, earned: correctByType("count") >= 5 };
+      case 3: return { ...r, earned: correctByType("compose") >= 3 };
+      case 4: return { ...r, earned: correctByType("logic") >= 3 };
+      case 5: return { ...r, earned: totalCorrect >= 10 };
+      case 6: return { ...r, earned: false };
+      case 7: return { ...r, earned: totalAnswered >= TASKS.length };
+      case 8: return { ...r, earned: totalAnswered >= 10 && accuracy === 100 };
+      default: return r;
+    }
+  });
 
   const renderSection = () => {
     switch (active) {
       case "home": return <HomeSection onStart={() => setActive("tasks")} />;
-      case "tasks": return <TasksSection />;
-      case "progress": return <ProgressSection />;
-      case "rewards": return <RewardsSection />;
+      case "tasks": return <TasksSection answered={answered} setAnswered={setAnswered} />;
+      case "progress": return <ProgressSection totalAnswered={totalAnswered} totalCorrect={totalCorrect} accuracy={accuracy} earnedRewards={computedRewards.filter(r => r.earned).length} />;
+      case "rewards": return <RewardsSection rewards={computedRewards} />;
       case "parents": return <ParentsSection />;
       case "contacts": return <ContactsSection />;
     }
