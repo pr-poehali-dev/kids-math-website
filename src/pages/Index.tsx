@@ -614,32 +614,71 @@ export default function Index() {
 
   return (
     <div className="min-h-screen" style={{ background: "linear-gradient(160deg, #F7F4FF 0%, #EEF6FD 50%, #FFF8F0 100%)" }}>
-      <header className="sticky top-0 z-50 bg-white/80 backdrop-blur-md border-b border-gray-100">
-        <div className="max-w-4xl mx-auto px-4 py-3 flex items-center justify-between">
+
+      {/* Мобильный хедер */}
+      <header className="md:hidden sticky top-0 z-50 bg-white/90 backdrop-blur-md border-b border-gray-100">
+        <div className="px-4 py-3 flex items-center justify-between">
           <button onClick={() => setActive("home")} className="flex items-center gap-2 hover:opacity-80 transition-opacity">
             <span className="text-2xl">🦉</span>
             <span className="font-display font-extrabold text-xl text-[#3A3A5C]">Умняша</span>
           </button>
-          <nav className="hidden md:flex items-center gap-1">
-            {NAV_ITEMS.filter(n => n.id !== "home").map(item => (
-              <button
-                key={item.id}
-                onClick={() => setActive(item.id as Section)}
-                className={`px-3 py-2 rounded-xl font-display font-semibold text-sm transition-all ${
-                  active === item.id ? "bg-[#5BAADC] text-white shadow-sm" : "text-gray-500 hover:bg-gray-50 hover:text-[#3A3A5C]"
-                }`}
-              >
-                {item.emoji} {item.label}
-              </button>
-            ))}
-          </nav>
         </div>
       </header>
 
-      <main className="max-w-4xl mx-auto px-4 py-8">
+      {/* Десктоп: сайдбар + контент */}
+      <div className="hidden md:flex min-h-screen">
+
+        {/* Сайдбар */}
+        <aside className="w-60 shrink-0 sticky top-0 h-screen flex flex-col bg-white/80 backdrop-blur-md border-r border-gray-100 px-4 py-6">
+          <button onClick={() => setActive("home")} className="flex items-center gap-3 mb-8 hover:opacity-80 transition-opacity px-2">
+            <span className="text-3xl">🦉</span>
+            <span className="font-display font-extrabold text-xl text-[#3A3A5C]">Умняша</span>
+          </button>
+
+          <nav className="flex flex-col gap-1 flex-1">
+            {NAV_ITEMS.map(item => (
+              <button
+                key={item.id}
+                onClick={() => setActive(item.id as Section)}
+                className={`flex items-center gap-3 px-4 py-3 rounded-2xl font-display font-semibold text-sm transition-all text-left ${
+                  active === item.id
+                    ? "bg-[#5BAADC] text-white shadow-md"
+                    : "text-gray-500 hover:bg-gray-50 hover:text-[#3A3A5C]"
+                }`}
+              >
+                <span className="text-lg">{item.emoji}</span>
+                {item.label}
+              </button>
+            ))}
+          </nav>
+
+          <div className="mt-auto pt-4 border-t border-gray-100">
+            <div className="px-4 py-3 bg-sky-50 rounded-2xl">
+              <p className="text-xs text-gray-400 font-display font-semibold mb-1">Прогресс</p>
+              <div className="flex items-center gap-2">
+                <div className="flex-1 bg-gray-100 rounded-full h-2">
+                  <div className="h-2 rounded-full transition-all duration-500" style={{ width: `${Math.round((totalAnswered / TASKS.length) * 100)}%`, background: "linear-gradient(90deg, #5BAADC, #A78BDB)" }} />
+                </div>
+                <span className="text-xs font-display font-bold text-[#5BAADC]">{totalAnswered}/{TASKS.length}</span>
+              </div>
+            </div>
+          </div>
+        </aside>
+
+        {/* Основной контент */}
+        <main className="flex-1 min-w-0 px-8 py-8 overflow-y-auto">
+          <div className="max-w-4xl">
+            {renderSection()}
+          </div>
+        </main>
+      </div>
+
+      {/* Мобильный контент */}
+      <main className="md:hidden px-4 py-6">
         {renderSection()}
       </main>
 
+      {/* Мобильная нижняя навигация */}
       <nav className="md:hidden fixed bottom-0 left-0 right-0 bg-white/95 backdrop-blur border-t border-gray-100 px-2 py-2 z-50">
         <div className="flex items-center justify-around">
           {NAV_ITEMS.map(item => (
